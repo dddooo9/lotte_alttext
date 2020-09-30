@@ -2,11 +2,11 @@
 2020 멋쟁이사자처럼 해커톤_시각장애인을 위한 롯데 대체텍스트 사이트
 
 # 개발
-[강동희](https://github.com/dhk010111)
-[고명기](https://github.com/godgi)
-[김태형](https://github.com/pletain)
-[임도연](https://github.com/dddooo9)
-[송요민](https://github.com/alsthd27)
+1. 크롤링 : [강동희](https://github.com/dhk010111), [송요민](https://github.com/alsthd27)
+
+1. api : [고명기](https://github.com/godgi), [김태형](https://github.com/pletain)
+
+1. 로그인/회원가입 및 기타 : [임도연](https://github.com/dddooo9)
 
 # 시작
 1. repository fork
