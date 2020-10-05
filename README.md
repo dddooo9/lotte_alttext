@@ -1,6 +1,10 @@
 # lotte_alttext
 2020 멋쟁이사자처럼 해커톤_시각장애인을 위한 롯데 대체텍스트 사이트
 
+# Template
+
+[Shoppers](https://colorlib.com/wp/template/shoppers/)
+
 # 개발
 1. 크롤링 : [강동희](https://github.com/dhk010111), [송요민](https://github.com/alsthd27)
 
