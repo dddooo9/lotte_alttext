@@ -1,7 +1,7 @@
 import re
 
 # 스크랩하고자 하는 형태
-p = re.compile("ca.e")
+p = re.compile("..se$")
 
 # ca.e  : .에 들어갈 단 하나의 문자를 의미
 # ^de   : de로 시작하는 문자열을 의미
