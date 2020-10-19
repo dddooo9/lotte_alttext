@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"}
 
-for i in range(0, 2100, 60): # 여성의류 페이지를 보니까 35 페이지까지 있었음
+for i in range(0, 2100, 60): # 남성의류 카테고리에 35 페이지까지 있으므로 최대값은 2100
     ni = i / 60
     pni = ni + 1
     print("="*20)
@@ -16,22 +16,25 @@ for i in range(0, 2100, 60): # 여성의류 페이지를 보니까 35 페이지�
     print("="*20)
 
     # 파라미터 u2값에 60이 더해질 때마다 다음 페이지 반환
-    url = "https://www.lotteon.com/search/render/render.ecn?&u2={}&u3=60&u9=navigateProduct&render=nqapi&platform=pc&collection_id=9&u4=ec10200000".format(i)
+    url = "https://www.lotteon.com/search/render/render.ecn?&u2={}&u3=60&u9=navigateProduct&render=nqapi&platform=pc&collection_id=9&u4=ec10200001".format(i)
 
     res = requests.get(url, headers=headers)
     res.raise_for_status()
 
     soup = BeautifulSoup(res.text, "lxml")
     products = soup.find_all("li", attrs={"class": "srchProductItem"})
+    #requests.get("https://www.lotteon.com/p/product/" + id)
     for product in products:
         url = product.div.div.a["href"] # 상품 상세보기 페이지 URL
+        id_parameter = re.sub('https://www.lotteon.com/p/product/', '', url)
+        id = id_parameter[0:12] # 상품 ID
         thumb = product.div.div.a.div.img["src"] # 상품 썸네일 이미지 URL
         brand = product.find("strong").get_text(strip=True) # 상품 브랜드명 (strip=True로 공백 제거)
         brand_name = product.find("div", attrs={"class": "srchProductUnitTitle"}).get_text(strip=True)
         except_brand = re.sub(brand, '', brand_name)
         name = except_brand.lstrip('() ') # 상품명 (원본 소스에서는 상품명 엘레먼트 자체에 브랜드명이 포함돼있어, 브랜드명 제거)
         price = product.find("span", attrs={"class": "srchCurrentPrice"}).get_text(strip=True) # 상품 가격
-        print("상세URL:", url, "\n썸네일URL:", thumb, "\n브랜드명:", brand, "\n상품명:", name, "\n가격:", price)
+        print("상세URL:", url, "\n상품ID:", id, "\n썸네일URL:", thumb, "\n브랜드명:", brand, "\n상품명:", name, "\n가격:", price)
         print("-"*150)
 
 # 페이지 소스 참고용 HTML 생성    
