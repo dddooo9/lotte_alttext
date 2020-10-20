@@ -3,10 +3,10 @@
 따라서 .py 파일명에 'lotte_' prefix 붙임
 '''
 
-import csv, requests, re
+import csv, requests, re, os
 from bs4 import BeautifulSoup
 
-filename = "lotte_scraping.csv"
+filename = "./alttext/lotte_scraping.csv"
 f = open(filename, "w", encoding="utf-8-sig", newline="")
 writer = csv.writer(f)
 
@@ -15,18 +15,16 @@ writer.writerow(title)
 
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"}
 
-for i in range(0, 2100, 60): # 남성의류 카테고리에 35 페이지까지 있으므로 최대값은 2100
+for i in range(0, 60, 60): # 남성의류 카테고리에 35 페이지까지 있으므로 최대값은 2100
     ni = i / 60
     pni = ni + 1
-    print("="*20)
-    print("상품 리스트", round(pni), "/ 35 페이지 출력")
-    print("="*20)
+    print("="*35)
+    print("상품 리스트", round(pni), "/ 35 페이지 출력됨")
+    print("="*35)
 
-    # 파라미터 u2값에 60이 더해질 때마다 다음 페이지 반환
-    url = "https://www.lotteon.com/search/render/render.ecn?&u2={}&u3=60&u9=navigateProduct&render=nqapi&platform=pc&collection_id=9&u4=ec10200001".format(i)
+    url = "https://www.lotteon.com/search/render/render.ecn?&u2={}&u3=60&u9=navigateProduct&render=nqapi&platform=pc&collection_id=9&u4=ec10200001".format(i) # 파라미터 u2값에 60이 더해질 때마다 다음 페이지 반환
     res = requests.get(url, headers=headers)
     res.raise_for_status()
-
     soup = BeautifulSoup(res.text, "lxml")
     products = soup.find_all("li", attrs={"class": "srchProductItem"})
     for product in products:
@@ -50,11 +48,32 @@ for i in range(0, 2100, 60): # 남성의류 카테고리에 35 페이지까지 �
         except_brand = re.sub(brand, '', brand_name)
         name = except_brand.lstrip('() ') # 상품명 (원본 소스에서는 상품명 엘레먼트 자체에 브랜드명이 포함돼있어, 브랜드명 제거)
         price = product.find("span", attrs={"class": "srchCurrentPrice"}).get_text(strip=True) # 상품 가격
-        list = [purl, id, durl, thumb, brand, name, price]
         # print("상세URL:", purl, "\n상품ID:", id, "\n상세innerURL:", durl, "\n썸네일URL:", thumb, "\n브랜드명:", brand, "\n상품명:", name, "\n가격:", price)
+        list = [purl, id, durl, thumb, brand, name, price]
         # print(list)
         # print("-"*150)
         writer.writerow(list)
+        
+        ires = requests.get(durl, headers=headers)
+        ires.raise_for_status()
+        isoup = BeautifulSoup(ires.text, "lxml")
+        # with open("test_lotte_inner.html", "w", encoding="utf8") as f:
+        #     f.write(ires.text)
+        innerimgs = isoup.find("span", attrs={"id": "m2root"}).find_all("img")
+        for idx, innerimg in enumerate(innerimgs):
+            innerimgurl = innerimg["src"]
+            # print(innerimgurl)
+            # list = [purl, id, durl, thumb, brand, name, price, innerimgurl]
+            # print(list)
+            image_res = requests.get(innerimgurl)
+            # image_res.raise_for_status()
+            if image_res.status_code == requests.codes.ok:
+                path = "./alttext/innerimgs"
+                if not os.path.isdir(path):
+                    os.mkdir(path)
+                with open("./alttext/innerimgs/{}_{}.jpg".format(id, idx+1), "wb") as f:
+                    f.write(image_res.content)
+            
 
 # 페이지 소스 참고용 HTML 생성    
 # with open("test_lotte_outer.html", "w", encoding="utf8") as f:
@@ -106,7 +125,7 @@ print(ms)
 
 # status_code가 200이면 정상, 403이면 접근권한 없다는 뜻
 # status_code가 403이면 해당 서버에서 스크래핑 봇을 차단한 것이므로 사람인 척 접근하기 위해 User-Agent 처리 필요
-# 'status_code가 200' = requests.codes.ok
+# 'status_code가 200' == requests.codes.ok
 
 # 스크래핑한 것을 새 파일로 생성
 with open("lotte_list_inner.html", "w", encoding="utf8") as f:
