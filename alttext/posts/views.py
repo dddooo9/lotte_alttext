@@ -5,5 +5,3 @@ def shop(request):
     return render(request, 'posts/shop.html')
 
 #상품 상세보기 페이지
-def A_01(request):
-    return render(request, 'posts/A_01.html')
