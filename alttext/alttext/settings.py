@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    'webscraping',
 
     #django-allauth
     'django.contrib.sites',
@@ -143,3 +142,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'alttext', 'media')
+
+# DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000

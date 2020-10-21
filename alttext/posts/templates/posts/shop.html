@@ -44,31 +44,38 @@
             </div>
           </div>
           <div class="row mb-5">
-
+            {% for product in pagenums %}
             <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
               <div class="block-4 text-center border">
                 <figure class="block-4-image">
-                  <a href="#"><img src="#" alt="Product Image" class="img-fluid"></a>
+                  <a href="{{ product.p_detail_url }}"><img src="{{ product.p_thumb_url }}" alt="Product Image" class="img-fluid"></a>
                 </figure>
+
                 <div class="block-4-text p-4">
-                  <h3>상품 브랜드명</a><br></h3>
-                  <a href="#"><br>상품명</a>
-                  <p class="text-primary font-weight-bold">가격</p>
+                  <h3>{{ product.p_brand }}<br></h3>
+                  <a href="{{ product.p_detail_url }}"><br>{{ product.p_name }}</a>
+                  <p class="text-primary font-weight-bold">{{ product.p_price }}</p>
                 </div>
+                
               </div>
             </div>
+            {% endfor %}
           </div>
           <div class="row" data-aos="fade-up">
             <div class="col-md-12 text-center">
               <div class="site-block-27">
                 <ul>
-                  <li><a href="#">&lt;</a></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&gt;</a></li>
+                  {% if pagenums.has_previous %}
+                  <li><a href="?page={{ pagenums.number|add:-3 }}">&lt;</a></li>
+                  <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
+                  <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
+                  {% endif %}
+                  <li class="active"><span>{{ pagenums.number }}</span></li>
+                  {% if pagenums.has_next %}
+                  <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
+                  <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
+                  <li><a href="?page={{ pagenums.number|add:+3 }}">&gt;</a></li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
