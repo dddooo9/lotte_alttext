@@ -15,12 +15,15 @@
             <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
               <div class="block-4 text-center border">
                 <figure class="block-4-image">
-                  <a href="{{ product.p_detail_url }}"><img src="{{ product.p_thumb_url }}" alt="Product Image" class="img-fluid"></a>
+                  <a href="{% url 'posts:detail' product.pk %}"><img src="{{ product.p_thumb_url }}" alt="Product Image" class="img-fluid"></a>
                 </figure>
-
                 <div class="block-4-text p-4">
+                  {% if product.p_brand == "" %}
+                  <h3></h3>
+                  {% else %}
                   <h3>{{ product.p_brand }}<br></h3>
-                  <a href="{{ product.p_detail_url }}"><br>{{ product.p_name }}</a>
+                  {% endif %}
+                  <a href="{% url 'posts:detail' product.pk %}"><br>{{ product.p_name }}</a>
                   <p class="text-primary font-weight-bold">{{ product.p_price }}</p>
                 </div>
                 
@@ -38,86 +41,20 @@
                   <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
                   <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
                   <li><a href="?page={{ pagenums.number|add:+3 }}">{{ pagenums.number|add:+3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+4 }}">&gt;</a></li>
                 {% endif %}
                 {% if pagenums.number == 2 %}
                   <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
                   <li class="active"><span>{{ pagenums.number }}</span></li>
                   <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
                   <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+3 }}">{{ pagenums.number|add:+3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+4 }}">&gt;</a></li>
                 {% endif %}
                 {% if pagenums.number == 3 %}
                   <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
                   <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
                   <li class="active"><span>{{ pagenums.number }}</span></li>
                   <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+3 }}">{{ pagenums.number|add:+3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+4 }}">&gt;</a></li>
                 {% endif %}
                 {% if pagenums.number == 4 %}
-                  <li><a href="?page={{ pagenums.number|add:-3 }}">{{ pagenums.number|add:-3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
-                  <li class="active"><span>{{ pagenums.number }}</span></li>
-                  <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+3 }}">{{ pagenums.number|add:+3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+4 }}">&gt;</a></li>
-                {% endif %}
-                {% if pagenums.number == 5 %}
-                  <li><a href="?page={{ pagenums.number|add:-4 }}">&lt;</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-3 }}">{{ pagenums.number|add:-3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
-                  <li class="active"><span>{{ pagenums.number }}</span></li>
-                  <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+3 }}">{{ pagenums.number|add:+3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+4 }}">&gt;</a></li>
-                {% endif %}
-                {% if pagenums.number == 6 %}
-                  <li><a href="?page={{ pagenums.number|add:-4 }}">&lt;</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-3 }}">{{ pagenums.number|add:-3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
-                  <li class="active"><span>{{ pagenums.number }}</span></li>
-                  <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+3 }}">{{ pagenums.number|add:+3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+4 }}">&gt;</a></li>
-                {% endif %}
-                {% if pagenums.number == 7 %}
-                  <li><a href="?page={{ pagenums.number|add:-4 }}">&lt;</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-3 }}">{{ pagenums.number|add:-3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
-                  <li class="active"><span>{{ pagenums.number }}</span></li>
-                  <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+3 }}">{{ pagenums.number|add:+3 }}</a></li>
-                {% endif %}
-                {% if pagenums.number == 8 %}
-                  <li><a href="?page={{ pagenums.number|add:-4 }}">&lt;</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-3 }}">{{ pagenums.number|add:-3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
-                  <li class="active"><span>{{ pagenums.number }}</span></li>
-                  <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:+2 }}">{{ pagenums.number|add:+2 }}</a></li>
-                {% endif %}
-                {% if pagenums.number == 9 %}
-                  <li><a href="?page={{ pagenums.number|add:-4 }}">&lt;</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-3 }}">{{ pagenums.number|add:-3 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
-                  <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
-                  <li class="active"><span>{{ pagenums.number }}</span></li>
-                  <li><a href="?page={{ pagenums.number|add:+1 }}">{{ pagenums.number|add:+1 }}</a></li>
-                {% endif %}
-                {% if pagenums.number == 10 %}
-                  <li><a href="?page={{ pagenums.number|add:-4 }}">&lt;</a></li>
                   <li><a href="?page={{ pagenums.number|add:-3 }}">{{ pagenums.number|add:-3 }}</a></li>
                   <li><a href="?page={{ pagenums.number|add:-2 }}">{{ pagenums.number|add:-2 }}</a></li>
                   <li><a href="?page={{ pagenums.number|add:-1 }}">{{ pagenums.number|add:-1 }}</a></li>
