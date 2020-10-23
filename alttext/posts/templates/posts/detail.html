@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="{{ product_ocr.p_thumb_url }}" alt="Product Image" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <h2 class="text-black">{{ product_ocr.p_name }}</h2>
+            <p class="mb-4">{{ product_ocr.p_brand }}</p>
+            <p><strong class="text-primary h4">{{ product_ocr.p_price }}</strong></p>
+            <p><a href="{{ product_ocr.p_detail_url }}" class="buy-now btn btn-sm btn-primary">구매하기</a></p>
+          </div>
+              {% for data in text_img %}
+                <span stlye="font-size":20px>{{ data }} &nbsp;</span>
+              {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endblock %}
