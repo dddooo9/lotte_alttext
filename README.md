@@ -26,7 +26,7 @@
         
         $ cd [프로젝트 폴더명]
         
-        $ git remote add upstream [fork한 repository url]
+        $ git remote add upstream https://github.com/dddooo9/lotte_alttext
        
 # 작업
 1. branch 생성 및 이동
