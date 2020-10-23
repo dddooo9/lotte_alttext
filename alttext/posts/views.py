@@ -51,10 +51,12 @@ def shop(request):
             id = re.sub('https://www.lotteon.com/p/product/', '', purl)[0:15] # 상품 ID
             if re.sub('https://www.lotteon.com/p/product/', '', purl)[0:2] == "LO": # 상품 ID가 LO로 시작하는 경우 상품 ID
                 id = re.sub('https://www.lotteon.com/p/product/', '', purl)[0:12]
-            if re.sub('https://www.lotteon.com/p/product/', '', purl)[0:2] == "LD": # 상품 ID가 LO로 시작하는 경우 상품 ID
+            if re.sub('https://www.lotteon.com/p/product/', '', purl)[0:2] == "LD": # 상품 ID가 LD로 시작하는 경우 상품 ID
                 id = re.sub('https://www.lotteon.com/p/product/', '', purl)[0:11]
-            if re.sub('https://www.lotteon.com/p/product/', '', purl)[0:2] == "PD": # 상품 ID가 LO로 시작하는 경우 상품 ID
+            if re.sub('https://www.lotteon.com/p/product/', '', purl)[0:2] == "PD": # 상품 ID가 PD로 시작하는 경우 상품 ID
                 id = re.sub('https://www.lotteon.com/p/product/', '', purl)[0:7]
+            if re.sub('https://www.lotteon.com/p/product/', '', purl)[0:2] == "LE": # 상품 ID가 LE로 시작하는 경우 상품 ID
+                id = re.sub('https://www.lotteon.com/p/product/', '', purl)[0:12]
             if re.sub('https://www.lotteon.com/p/product/', '', purl)[0:2] == "92": # 상품 ID가 92로 시작하는 경우 스크래핑 건너뛰고 기존 데이터 렌더
                 return render(request, 'posts/shop.html', {'products': all_products, 'pagenums': pagenums})
             durl = "https://red.lotteon.com/goodsdetail?view=type1-raw&model=itemdetail%2F"+id[0:2]+"%2F"+id[2:4]+"%2F"+id[4:6]+"%2F"+id[6:8]+"%2F"+id[8:10]+"%2F"+id[10:12]+"%2F"+id[12:14]+"%2F"+id[14:15]+"%2FDSCRP_"+id # 상세보기 innerHtml URL
@@ -65,7 +67,7 @@ def shop(request):
                 imgurl = dsoup.find("meta", attrs={"property": "og:image"})["content"] # 리사이징되지 않은 썸네일 원본 URL
                 id = imgurl[-29:-17]
                 durl = "http://red.lotteon.com/goodsdetail?view=type1-raw&model=itemdetail%2F"+id[0:2]+"%2F"+id[2:4]+"%2F"+id[4:6]+"%2F"+id[6:8]+"%2F"+id[8:10]+"%2F"+id[10:12]+"%2FDSCRP_"+id
-            if id[0:2] == "LD": # 상품 ID가 LO로 시작하는 경우 상세보기 innerHtml URL
+            if id[0:2] == "LD": # 상품 ID가 LD로 시작하는 경우 상세보기 innerHtml URL
                 dres = requests.get(purl, headers=headers)
                 dres.raise_for_status()
                 dsoup = BeautifulSoup(dres.text, "lxml")
@@ -78,6 +80,13 @@ def shop(request):
                 dsoup = BeautifulSoup(dres.text, "lxml")
                 imgurl = dsoup.find("meta", attrs={"property": "og:image"})["content"] # 리사이징되지 않은 썸네일 원본 URL
                 id = imgurl[-19:-8]
+                durl = "http://red.lotteon.com/goodsdetail?view=type1-raw&model=itemdetail%2F"+id[0:2]+"%2F"+id[2:4]+"%2F"+id[4:6]+"%2F"+id[6:8]+"%2F"+id[8:10]+"%2F"+id[10:11]+"%2FDSCRP_"+id
+            if id[0:2] == "LE": # 상품 ID가 LE로 시작하는 경우 상세보기 innerHtml URL
+                dres = requests.get(purl, headers=headers)
+                dres.raise_for_status()
+                dsoup = BeautifulSoup(dres.text, "lxml")
+                imgurl = dsoup.find("meta", attrs={"property": "og:image"})["content"] # 리사이징되지 않은 썸네일 원본 URL
+                id = imgurl[-29:-17]
                 durl = "http://red.lotteon.com/goodsdetail?view=type1-raw&model=itemdetail%2F"+id[0:2]+"%2F"+id[2:4]+"%2F"+id[4:6]+"%2F"+id[6:8]+"%2F"+id[8:10]+"%2F"+id[10:11]+"%2FDSCRP_"+id
             thumb = product.div.div.a.div.img["src"] # 썸네일 URL
             brand = product.find("strong").get_text(strip=True) # 브랜드명
