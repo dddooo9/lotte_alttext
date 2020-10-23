@@ -10,10 +10,12 @@
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-                <a href="{% url 'index' %}"><img src="{% static 'images/sitelogo.png' %}" width="320px" height="180px"></a>
+                <a href="{% url 'posts:shop' %}"><img src="{% static 'images/sitelogo.png' %}" width="320px" height="180px"></a>
             </div>
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+              <a href="#" style="font-family: 'LotteMartDream', sans-serif;">로그인</a>
+              <a href="#" style="font-family: 'LotteMartDream', sans-serif;">&nbsp회원가입</a>
               <div class="site-top-icons">
                 <ul>
                   <li>
@@ -24,10 +26,8 @@
                   <li>
                     <a href="#" class="site-cart">
                       <i class="far fa-heart"></i>
-                      <span class="count">2</span>
                     </a>
                   </li> 
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
             </div>
@@ -35,20 +35,14 @@
           </div>
         </div>
       </div> 
-      <nav class="site-navigation text-right text-md-center" role="navigation">
+      <nav class="site-navigation text-center text-md-center" role="navigation">
         <div class="container">
-          <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li>
-              <a href="{% url 'index' %}">Home</a>
-            </li>
+          <ul class="site-menu js-clone-nav">
             <li>
               <a href="{% url 'about' %}">About</a>
             </li>
             <li>
               <a href="{% url 'posts:shop' %}">Shop</a>
-            </li>
-            <li>
-              <a href="#">MyPage</a>
             </li>
           </ul>
         </div>

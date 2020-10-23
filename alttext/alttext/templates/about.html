@@ -2,22 +2,13 @@
 {% load static %}
 
 {% block content %}
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="{% url 'index' %}">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">About</strong>
-          </div>
-        </div>
-      </div>
-    </div>  
-  
       <div class="site-section border-bottom" data-aos="fade">
         <div class="container">
           <div class="row mb-5">
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="block-16">
                 <figure>
-                  <img src="{% static 'images/lotteva.png' %}" alt="임시 이미지" class="img-fluid rounded">
+                  <img src="{% static 'images/aboutimg.png' %}" alt="롯데를 들어봐! 썸네일" class="img-fluid rounded">
                 </figure>
               </div>
             </div>
@@ -26,8 +17,19 @@
               <div class="site-section-heading pt-3 mb-4">
                 <h2 class="text-black" style="font-family: 'LotteMartHappy', sans-serif;">롯데를 들어봐!</h2>
               </div>
-              <p style="font-family: 'LotteMartDream', sans-serif;">사이트 소개글1</p>
-              <p style="font-family: 'LotteMartDream', sans-serif;">사이트 소개글2</p>
+              <h4 class="text-black" style="font-family: 'LotteMartHappy', sans-serif;">DT의 가속화로 인해 소외되는 시각장애인</h2>
+              <p style="font-family: 'LotteMartDream', sans-serif;">
+                DT가 가장 활발히 진행중인 온라인 쇼핑몰에서 시각장애인들은 소외되고 있습니다.
+                시각장애인은 일반 텍스트와 이미지의 대체 텍스트만을 음성으로 출력해주는 스크린리더기를 이용해 온라인 쇼핑을 할 수 있습니다.
+                최근 국내 온라인 쇼핑몰은 대부분의 상품 상세 정보를 이미지로 제공하는 반면에
+                대체 텍스트는 기입하지 않는 경우가 대다수이며 텍스트로 제공하는 부분에서도 '상세 이미지 참고' 등으로 표기하여
+                시각장애인의 쇼핑몰 이용을 배려하지 않고 있습니다. 
+              </p>
+              <h4 class="text-black" style="font-family: 'LotteMartHappy', sans-serif;">시각장애인을 위한 롯데 대체 텍스트 쇼핑몰</h2>
+              <p style="font-family: 'LotteMartDream', sans-serif;">
+                그래서 저희는 시각장애인이 온라인 쇼핑몰을 더욱 원활하게 이용할 수 있도록 롯데 대체텍스트 쇼핑몰 '롯데VA'를 개발하였습니다.
+                롯데의 최대 온라인 쇼핑몰인 롯데온 상품의 상품 상세 이미지를 텍스트화하여 스크린리더기가 읽을 수 있도록 하였습니다.
+              </p>
             </div>
           </div>
         </div>
