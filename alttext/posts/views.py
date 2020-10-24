@@ -133,9 +133,9 @@ def detail(request, id):
     file_count = len(files)
 
     inferText_list = list()
-    URL = "https://d187511d84b14b8f8184b5ad4835d2ef.apigw.ntruss.com/custom/v1/4550/12defdafb8f2bed704800204b38fc82de9aa141e0ee96e3ba824c249ac6078b0/general"
+    URL = "#"
             # 본인의 Secret Key로 치환
-    KEY = "eXloWnRyYnpTQ1BkR1NjbGF3YldZU3dMYkVxQ2puQUs="
+    KEY = "#"
     headers = {
         "Content-Type": "application/json",
         "X-OCR-SECRET": KEY
