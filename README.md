@@ -1,16 +1,19 @@
-# lotte_alttext
-2020 멋쟁이사자처럼 해커톤_시각장애인을 위한 롯데 대체텍스트 사이트
+# LOTTE VA 롯데 봐
+Lotte Visually Access
+
+2020 멋쟁이사자처럼 해커톤_시각장애인을 위한 롯데 대체텍스트 사이트 `롯데 VA`
+
 
 # Template
 
 [Shoppers](https://colorlib.com/wp/template/shoppers/)
 
 # 개발
-1. 크롤링 : [강동희](https://github.com/dhk010111), [송요민](https://github.com/alsthd27)
+1. Crawling : [강동희](https://github.com/dhk010111), [송요민](https://github.com/alsthd27)
 
-1. api : [고명기](https://github.com/godgi), [김태형](https://github.com/pletain)
+1. Naver ocr api : [고명기](https://github.com/godgi), [김태형](https://github.com/pletain)
 
-1. 로그인/회원가입 및 기타 : [임도연](https://github.com/dddooo9)
+1. design, code review : [임도연](https://github.com/dddooo9)
 
 # 시작
 1. repository fork
