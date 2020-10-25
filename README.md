@@ -5,6 +5,8 @@ Lotte Visually Access
 
 [LOTTE VA : lotteva.com](http://lotteva.com)
 
+[소개파일](https://drive.google.com/file/d/1QVJXBtdz9JWPMEd9S8hyNDC676regJdC/view?usp=sharing)
+
 # Template
 
 [Shoppers](https://colorlib.com/wp/template/shoppers/)
