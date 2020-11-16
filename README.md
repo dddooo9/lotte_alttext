@@ -3,6 +3,8 @@ Lotte Visually Access
 
 2020 멋쟁이사자처럼 해커톤_시각장애인을 위한 롯데 대체텍스트 사이트 `롯데 VA`
 
+[롯데X멋쟁이사자처럼 해커톤 동상 수상](https://www.notion.so/f41506c8416940f397164e02df1f6848)
+
 [LOTTE VA : lotteva.com](http://lotteva.com)
 현재 서버 중지
 
