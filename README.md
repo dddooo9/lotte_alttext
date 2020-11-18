@@ -5,7 +5,7 @@ Lotte Visually Access
 
 [롯데X멋쟁이사자처럼 해커톤 동상 수상](https://www.notion.so/f41506c8416940f397164e02df1f6848)
 
-<img src="https://github.com/dddooo9/lotte_alttext/blob/master/va1.jpg" width="300px">
+<img src="https://github.com/dddooo9/lotte_alttext/blob/master/va1.jpg" width="300px">   <img src="https://github.com/dddooo9/lotte_alttext/blob/master/va2.jpg" width="300px">
 
 [LOTTE VA : lotteva.com](http://lotteva.com)
 현재 서버 중지
